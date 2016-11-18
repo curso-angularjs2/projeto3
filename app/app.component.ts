@@ -20,15 +20,15 @@ const USUARIOS: Usuario[] = [
           <h2>Exemplo de usuários</h2>
           <div class="form-group col-md-4">
             <label>Id</label>
-            <input class="form-control" [(ngModel)]="usuarioObject.id"   />
+            <input type="number" class="form-control" [(ngModel)]="usuarioObject.id"   />
           </div>
           <div class="form-group col-md-4">
             <label>Nome</label>
-            <input class="form-control" [(ngModel)]="usuarioObject.nome"   />
+            <input type="text" class="form-control" [(ngModel)]="usuarioObject.nome"   />
           </div>
           <div class="form-group col-md-4">
             <label>Idade</label>
-            <input class="form-control" [(ngModel)]="usuarioObject.idade"   />
+            <input type="number" class="form-control" [(ngModel)]="usuarioObject.idade"   />
           </div>
           <div *ngIf="!edit" class="form-group col-md-3">
             <button class="btn btn-primary" (click)="salvarUsuario(usuarioObject)">Salvar</button>
