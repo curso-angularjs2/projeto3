@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var usuario_class_1 = require('./usuario.class');
+var core_1 = require("@angular/core");
+var usuario_class_1 = require("./usuario.class");
 var USUARIOS = [
     { id: 11, nome: 'João', idade: 20 },
     { id: 12, nome: 'Maria', idade: 24 },
@@ -26,6 +26,7 @@ var AppComponent = (function () {
     function AppComponent() {
         this.usuarioObject = new usuario_class_1.Usuario();
         this.usuarios = USUARIOS;
+        this.edit = false;
     }
     AppComponent.prototype.deletarUsuario = function (index) {
         this.usuarios.splice(index, 1);
@@ -34,14 +35,23 @@ var AppComponent = (function () {
         this.usuarios.push(usuario);
         this.usuarioObject = new usuario_class_1.Usuario();
     };
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'projeto3',
-            template: "\n          <h2>Exemplo de usu\u00E1rios</h2>\n          <div class=\"form-group col-md-4\">\n            <label>Id</label>\n            <input class=\"form-control\" [(ngModel)]=\"usuarioObject.id\"   />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label>Nome</label>\n            <input class=\"form-control\" [(ngModel)]=\"usuarioObject.nome\"   />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label>Idade</label>\n            <input class=\"form-control\" [(ngModel)]=\"usuarioObject.idade\"   />\n          </div>\n          <div class=\"form-group col-md-3\">\n            <button class=\"btn btn-primary\" (click)=\"salvarUsuario(usuarioObject)\">Salvar</button>\n          </div>\n          <table class=\"table table-hover table-striped\">\n             <tr>\n                <th>\n                    Id\n                </th>\n                <th>\n                    Nome\n                </th>\n                <th>\n                    Idade\n                </th>\n                <th>\n                    A\u00E7\u00F5es\n                </th>\n             </tr>\n             <tr *ngFor=\"let usuario of usuarios; let i = index\">\n                <th>\n                    {{usuario.id}}\n                </th>\n                <th>\n                    {{usuario.nome}}\n                </th>\n                <th>\n                    {{usuario.idade}}\n                </th>\n                <th>\n                    <button class=\"btn btn-danger\" (click)=deletarUsuario(i)>Deletar</button>\n                </th>\n             </tr>\n          </table>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
+    AppComponent.prototype.editarUsuario = function (usuario, persistir) {
+        if (persistir === void 0) { persistir = false; }
+        this.edit = true;
+        this.usuarioObject = usuario;
+        if (persistir) {
+            this.usuarioObject = new usuario_class_1.Usuario();
+            this.edit = false;
+        }
+    };
     return AppComponent;
 }());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'projeto3',
+        template: "\n          <h2>Exemplo de usu\u00E1rios</h2>\n          <div class=\"form-group col-md-4\">\n            <label>Id</label>\n            <input class=\"form-control\" [(ngModel)]=\"usuarioObject.id\"   />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label>Nome</label>\n            <input class=\"form-control\" [(ngModel)]=\"usuarioObject.nome\"   />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label>Idade</label>\n            <input class=\"form-control\" [(ngModel)]=\"usuarioObject.idade\"   />\n          </div>\n          <div *ngIf=\"!edit\" class=\"form-group col-md-3\">\n            <button class=\"btn btn-primary\" (click)=\"salvarUsuario(usuarioObject)\">Salvar</button>\n          </div>\n          <div *ngIf=\"edit\" class=\"form-group col-md-3\">\n            <button class=\"btn btn-primary\" (click)=\"editarUsuario(usuarioObject, true)\">Editar</button>\n          </div>\n          <table class=\"table table-hover table-striped\">\n             <tr>\n                <th>\n                    Id\n                </th>\n                <th>\n                    Nome\n                </th>\n                <th>\n                    Idade\n                </th>\n                <th>\n\n                </th>\n                <th>\n\n                </th>\n             </tr>\n             <tr *ngFor=\"let usuario of usuarios; let i = index\">\n                <td>\n                    {{usuario.id}}\n                </td>\n                <td>\n                    {{usuario.nome}}\n                </td>\n                <td>\n                    {{usuario.idade}}\n                </td>\n                <td>\n                    <button class=\"btn btn-primary\" (click)=editarUsuario(usuario)>Editar</button>\n                </td>\n                <td>\n                    <button class=\"btn btn-danger\" (click)=deletarUsuario(i)>Deletar</button>\n                </td>\n             </tr>\n          </table>\n  "
+    }),
+    __metadata("design:paramtypes", [])
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

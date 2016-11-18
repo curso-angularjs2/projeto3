@@ -30,8 +30,11 @@ const USUARIOS: Usuario[] = [
             <label>Idade</label>
             <input class="form-control" [(ngModel)]="usuarioObject.idade"   />
           </div>
-          <div class="form-group col-md-3">
+          <div *ngIf="!edit" class="form-group col-md-3">
             <button class="btn btn-primary" (click)="salvarUsuario(usuarioObject)">Salvar</button>
+          </div>
+          <div *ngIf="edit" class="form-group col-md-3">
+            <button class="btn btn-primary" (click)="editarUsuario(usuarioObject, true)">Editar</button>
           </div>
           <table class="table table-hover table-striped">
              <tr>
@@ -45,22 +48,28 @@ const USUARIOS: Usuario[] = [
                     Idade
                 </th>
                 <th>
-                    Ações
+
+                </th>
+                <th>
+
                 </th>
              </tr>
              <tr *ngFor="let usuario of usuarios; let i = index">
-                <th>
+                <td>
                     {{usuario.id}}
-                </th>
-                <th>
+                </td>
+                <td>
                     {{usuario.nome}}
-                </th>
-                <th>
+                </td>
+                <td>
                     {{usuario.idade}}
-                </th>
-                <th>
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)=editarUsuario(usuario)>Editar</button>
+                </td>
+                <td>
                     <button class="btn btn-danger" (click)=deletarUsuario(i)>Deletar</button>
-                </th>
+                </td>
              </tr>
           </table>
   `
@@ -68,6 +77,7 @@ const USUARIOS: Usuario[] = [
 export class AppComponent {
     usuarioObject = new Usuario();
     usuarios = USUARIOS;
+    edit = false;
 
     deletarUsuario(index): void {
         this.usuarios.splice(index, 1);
@@ -76,6 +86,15 @@ export class AppComponent {
     salvarUsuario(usuario): void {
        this.usuarios.push(usuario);
        this.usuarioObject = new Usuario();
+    }
+
+    editarUsuario(usuario, persistir = false) : void{
+      this.edit = true;
+      this.usuarioObject = usuario;
+      if(persistir){
+         this.usuarioObject = new Usuario();
+         this.edit = false;
+      }
     }
 
 }
