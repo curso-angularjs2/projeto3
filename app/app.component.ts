@@ -36,42 +36,44 @@ const USUARIOS: Usuario[] = [
           <div *ngIf="edit" class="form-group col-md-3">
             <button class="btn btn-primary" (click)="editarUsuario(usuarioObject, true)">Editar</button>
           </div>
-          <table class="table table-hover table-striped">
-             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Idade
-                </th>
-                <th>
+          <div class="table-responsive">
+            <table class="table table-hover table-striped">
+               <tr>
+                  <th>
+                      Id
+                  </th>
+                  <th>
+                      Nome
+                  </th>
+                  <th>
+                      Idade
+                  </th>
+                  <th>
 
-                </th>
-                <th>
+                  </th>
+                  <th>
 
-                </th>
-             </tr>
-             <tr *ngFor="let usuario of usuarios; let i = index">
-                <td>
-                    {{usuario.id}}
-                </td>
-                <td>
-                    {{usuario.nome}}
-                </td>
-                <td>
-                    {{usuario.idade}}
-                </td>
-                <td>
-                    <button class="btn btn-primary" (click)=editarUsuario(usuario)>Editar</button>
-                </td>
-                <td>
-                    <button class="btn btn-danger" (click)=deletarUsuario(i)>Deletar</button>
-                </td>
-             </tr>
-          </table>
+                  </th>
+               </tr>
+               <tr *ngFor="let usuario of usuarios; let i = index">
+                  <td>
+                      {{usuario.id}}
+                  </td>
+                  <td>
+                      {{usuario.nome}}
+                  </td>
+                  <td>
+                      {{usuario.idade}}
+                  </td>
+                  <td>
+                      <button class="btn btn-primary" (click)=editarUsuario(usuario)>Editar</button>
+                  </td>
+                  <td>
+                      <button class="btn btn-danger" (click)=deletarUsuario(i)>Deletar</button>
+                  </td>
+               </tr>
+            </table>
+          </div>  
   `
 })
 export class AppComponent {
