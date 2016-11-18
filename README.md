@@ -137,4 +137,5 @@ export class AppModule { }
 ~~~
 
 Pronto! Agora o nosso simples CRUD está pronto!
-Para que você veja esse exemplo funcionando acesse [aqui | Demo](https://projeto3.herokuapp.com/)
+Para que você veja esse exemplo funcionando acesse
+<a href="https://projeto3.herokuapp.com/" target="_blank">aqui | Demo</a>
