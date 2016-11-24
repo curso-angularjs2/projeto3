@@ -138,4 +138,4 @@ export class AppModule { }
 
 Pronto! Agora o nosso simples CRUD está pronto!
 Para que você veja esse exemplo funcionando acesse
-<a href="https://projeto3.herokuapp.com/" target="_blank">aqui | Demo</a>
+<a href="https://crud-angularjs2.herokuapp.com/" target="_blank">aqui | Demo</a>
